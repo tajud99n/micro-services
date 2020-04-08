@@ -61,9 +61,9 @@ func (p *Product) UpdateProduct(rw http.ResponseWriter, r *http.Request) {
 
 type KeyProduct struct{}
 
-func (p Products) MiddlewareProductValidation(next http.Handler) http.Handler {
+func (p Product) MiddlewareProductValidation(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
-		prod := &data.Product{}
+		prod := data.Product{}
 
 		err := prod.FromJSON(r.Body)
 		if err != nil {
